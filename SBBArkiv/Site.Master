@@ -1,0 +1,78 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SBBArkiv.SiteMaster" %>
+
+<%@ Register Assembly="DevExpress.Web.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxLoadingPanel" TagPrefix="dx" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server" enctype="multipart/form-data">
+    <asp:ScriptManager runat="server" ID="scriptMgr" EnableScriptGlobalization="true">
+        <Scripts>
+            <asp:ScriptReference Path="~/Scripts/WebKit.js" />
+            <asp:ScriptReference Path="~/Scripts/LoadingPanel.js" />
+        </Scripts>
+    </asp:ScriptManager>
+    <dx:ASPxLoadingPanel ID="MasterLoadingPanel" ClientInstanceName="MasterLoadingPanel" ContainerElementID="mainDiv" runat="server" />
+    <div id="mainDiv" class="page">
+        <div class="header">
+            <div class="title">
+                <h1>
+                    Notearkiv - Stavanger Brass Band
+                </h1>
+            </div>
+            <div class="loginDisplay">
+                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                        [ <a href="~/Login.aspx" id="HeadLoginStatus" runat="server">Logg inn</a> ]
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        Logget inn som <span class="bold">
+                            <asp:LoginName ID="HeadLoginName" runat="server" />
+                        </span>[
+                        <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="RedirectToLoginPage" LogoutText="Logg ut" OnLoggedOut="LoginStatus_LoggedOut" />
+                        ]
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </div>
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal" OnClick="MasterLoadingPanel.Show()">
+                    <Items>
+                        <asp:MenuItem Value="SheetMusicPage" NavigateUrl="~/SheetMusicPage.aspx" Text="Arkivliste" />
+                        <asp:MenuItem Value="MusicPlayer" NavigateUrl="~/MusicPlayer.aspx" Text="Musikanter" />
+                        <asp:MenuItem Value="MusicParts" NavigateUrl="~/MusicParts.aspx" Text="Stemmer" />
+                        <asp:MenuItem Value="ChangePassword" NavigateUrl="~/Account/ChangePassword.aspx" Text="Endre passord" />
+                    </Items>
+                </asp:Menu>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+    </div>
+    </form>
+</body>
+</html>
+<script type="text/javascript">
+    Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(startRequest);
+    Sys.WebForms.PageRequestManager.getInstance().add_endRequest(endRequest);
+
+    function startRequest(sender, e) {
+        if (e != null)
+            HandleStartPostback(e._request._url);
+        else
+            HandleStartPostback("");
+    }
+    function endRequest(sender, e) {
+        HandleEndPostback();
+    }
+
+</script>
