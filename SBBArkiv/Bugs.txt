@@ -4,11 +4,9 @@ Known bugs
 Manglende funskjonalitet
 - Redigere kategorier
 - Fritekstsøk
-- Skjule kolonne for forlag osv.
 - Litt større knapper.
 - Kalkulert felt for skannet
 - Flere kategorier per stykke
-- Kategori for stor ved editering.
 - Knapp for å slette alle PDF-er for en stemme.
 - Mulighet for å legge på lydfiler
 - Logging og feilhåndtering når man sender e-post.

@@ -32,7 +32,7 @@
             <dx:GridViewDataTextColumn FieldName="Title" Caption="Tittel" VisibleIndex="2" ExportWidth="250" Settings-AutoFilterCondition="Contains" />
             <dx:GridViewDataTextColumn FieldName="Composer" Caption="Komponist" VisibleIndex="3" ExportWidth="120" Settings-AutoFilterCondition="Contains" />
             <dx:GridViewDataTextColumn FieldName="Arranger" Caption="Arrangør" VisibleIndex="4" ExportWidth="120" Settings-AutoFilterCondition="Contains" />
-            <dx:GridViewDataTextColumn FieldName="SoleSellingAgent" Caption="Forlag" VisibleIndex="5" Settings-AutoFilterCondition="Contains" />
+            <%--<dx:GridViewDataTextColumn FieldName="SoleSellingAgent" Caption="Forlag" VisibleIndex="5" Settings-AutoFilterCondition="Contains" />--%>
             <dx:GridViewDataTextColumn FieldName="MissingParts" Caption="Mangler" VisibleIndex="6" Settings-AutoFilterCondition="Contains" />
             <dx:GridViewDataComboBoxColumn FieldName="SheetMusicCategoryId" Caption="Kategori" VisibleIndex="7">
                 <PropertiesComboBox ValueField="Id" ValueType="System.Int32" TextField="Name" />

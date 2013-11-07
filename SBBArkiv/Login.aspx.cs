@@ -13,6 +13,7 @@ namespace SBBArkiv
         {
             if (HttpContext.Current.User.Identity.IsAuthenticated)
             {
+                System.Diagnostics.Trace.WriteLine("User authenticated as " + HttpContext.Current.User.Identity.Name + ". Redirecting to sheet music page.");
                 Response.Redirect("~/SheetMusicPage.aspx");
             }
 
